@@ -1,0 +1,192 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: whitesmoke;
+}
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --headerpadding: 1rem;
+  --headerFontSize: 1.2rem;
+  --xscale: 1.05;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.maincontainer {
+}
+.headcontainer {
+  display: flex;
+  flex-direction: row;
+  padding: 0.7rem;
+  border-bottom: 1px solid silver;
+  justify-content: space-between;
+}
+.headcontainer-left {
+  display: flex;
+  flex-direction: row;
+}
+.headcontainer-left-aboutme {
+  padding: var(--headerpadding);
+  font-size: var(--headerFontSize);
+}
+.headcontainer-left-aboutme:hover {
+  animation: example 1.2s ease infinite;
+  animation-play-state: running;
+  transition: all 1s;
+}
+.headcontainer-left-aboutme:not(:hover) {
+  animation: none;
+  transform: scaleX(1);
+}
+.headcontainer-left-somethingspecial {
+  padding: var(--headerpadding);
+  font-size: var(--headerFontSize);
+}
+.headcontainer-left-somethingspecial:hover {
+  animation: example 1.2s ease infinite;
+  animation-play-state: running;
+}
+.headcontainer-left-somethingspecial:not(:hover) {
+  animation: none;
+  transform: scale(1);
+}
+.headcontainer-right {
+  display: flex;
+}
+.headcontainer-right-footer {
+  padding: var(--headerpadding);
+  font-size: var(--headerFontSize);
+}
+.headcontainer-right-footer:hover {
+  animation: example 1.2s ease infinite;
+  animation-play-state: running;
+}
+.headcontainer-right-footer:not(:hover) {
+  animation: none;
+  transform: scaleX(1);
+}
+.animate-scale:hover {
+  animation: example 0.4s ease-in-out forwards;
+  animation-play-state: running;
+  transition: transform 0.3s;
+}
+.animate-scale:not(:hover) {
+  animation: none;
+  transform: scale(1);
+}
+@keyframes example {
+  to {
+    transform: scale(var(--xscale));
+  }
+}
+.secondcontainer {
+  position: relative;
+}
+.imagecontainer {
+  background: url("mountain.jpg") no-repeat center center fixed;
+  min-height: 40rem;
+  background-size: cover;
+}
+.titleonimage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: lightgoldenrodyellow;
+  font-size: 3rem;
+  transform: translateX(-50%);
+  animation: appear 1.2s ease-in-out forwards;
+  opacity: 0;
+  font-style: italic;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+.flexcards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*padding: 1.5rem;*/
+}
+.flexcards > .firstrow,
+.secondrow {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.github,
+.facebook,
+.twitter,
+.linkedin {
+  background: linear-gradient(135deg, gray 50%, coral 5%, lightblue 100%);
+  border: 0.5px solid white;
+  border-radius: 15px;
+  margin: 1.5rem;
+  margin-bottom: 0;
+}
+img {
+  width: 50px;
+  height: 50px;
+  margin: 2rem;
+}
+.thirdcontainer {
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  font-size: var(--headerFontSize);
+  background: linear-gradient(
+    135deg,
+    white 50%,
+    whitesmoke 50%,
+    lightgrey 100%
+  );
+}
+.thirdcontainer-animation {
+  opacity: 0;
+}
+.thirdcontainer-animation-start {
+  animation: appear 1.2s ease-in-out forwards;
+  animation-play-state: running;
+  transition: all 1s ease-in-out;
+}
+.cards {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+.cards > * {
+  border: 1px solid grey;
+  background-color: white;
+  border-radius: 0.4rem;
+}
+.textdiv {
+  line-height: 1.5rem;
+}
+.anotheranimation {
+  position: relative;
+  left: -120%;
+  opacity: 0;
+}
+.anotheranimation-start {
+  animation: fromlefttoright 1.5s ease forwards;
+  animation-play-state: running;
+  transition: all 0.5s;
+}
+.anotheranimation-stop {
+  animation: none;
+  left: -120%;
+}
+@keyframes fromlefttoright {
+  from {
+    left: -120%;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
