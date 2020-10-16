@@ -2,13 +2,18 @@ body{
     background-color: #f8f0e3;
     margin: 0;
 }
+/*
+.buttonendanimation{
+    visibility: hidden;
+}
+*/
+
 .entrance{
     position: absolute;
     width: 100%;
     height:100%;
     background-color: lightgrey;
     opacity: 0.8;
-    z-index: 0;
 }
 .entrance-animation{
     animation: appear .5s ease-in-out forwards;
@@ -16,6 +21,8 @@ body{
 @keyframes appear{
     to{
         opacity: 0;
+        display: none;
+        visibility: hidden;
     }
 }
 .buttonendanimation{
@@ -59,4 +66,71 @@ body{
 }
 .maincontainer{
     
+}
+.maincontainer-header{
+    display: flex;
+    background-color: #aeaa9f;
+    flex-direction: row;
+    padding: 1.25rem;
+    justify-content: space-between;
+    border: 2px solid #f8f7e3;
+    border-radius: 0 0 10px 10px;
+}
+.maincontainer-header-left{
+    font-size: 1.2rem;
+}
+.maincontainer-header-right{
+    font-size: 1.2rem;
+}
+.maincontainer-header-left:hover{
+    cursor: pointer;
+}
+.maincontainer-header-right:hover{
+    cursor: pointer;
+}
+.leftcontainer{
+    border:2px solid red;
+    width:12rem;
+    height:100vh;
+    position: absolute;
+    padding: .5rem;
+    left: -14rem;
+}
+.leftcontainer-animation{
+    animation: toright .7s ease-in-out forwards;
+    transition: all .4s;
+}
+.leftcontainer-animation-back{
+    animation: toleft .7s ease-in-out forwards;
+    transition: all .4s;
+}
+@keyframes toright{
+    to{
+        left:0;
+    }
+}
+@keyframes toleft{
+    from{
+        left: 0;
+    }
+    to{
+        left: -14rem
+    }
+}
+
+.leftlists{
+    padding: .5rem;
+}
+.leftlists > li{
+    display: flex;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    border-top: 1px solid #aeaa9f;
+    line-height: 2rem;
+    text-indent: .7rem;
+    padding-top: .8rem;
+}
+.leftlists > li:hover{
+    cursor: pointer;
 }
