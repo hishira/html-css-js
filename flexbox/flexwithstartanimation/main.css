@@ -5,8 +5,8 @@ body{
 /*
 .buttonendanimation{
     visibility: hidden;
-}
-*/
+}*/
+
 
 .entrance{
     position: absolute;
@@ -89,9 +89,9 @@ body{
     cursor: pointer;
 }
 .leftcontainer{
-    border:2px solid red;
+
     width:12rem;
-    height:100vh;
+    height:70vh;
     position: absolute;
     padding: .5rem;
     left: -14rem;
@@ -133,4 +133,43 @@ body{
 }
 .leftlists > li:hover{
     cursor: pointer;
+}
+.leftclose{
+    width: 25px;
+    height:5px;
+    position: absolute;
+    left: 2rem;
+    top: 1.9rem;
+    visibility: hidden;
+}
+.leftclose-visible{
+    visibility: visible;
+}
+.left-word-visible{
+    visibility: visible;
+}
+.left-word-novisible{
+    visibility: hidden;
+}
+.leftclose::before{
+    content: " ";
+    width: 25px;
+    height: 5px;
+    position: absolute;
+    background-color: black;
+    border: 1px solid black;
+}
+.leftclose::after{
+    content: " ";
+    width: 25px;
+    height: 5px;
+    position: absolute;
+    background-color: black;
+    border: 1px solid black
+}
+.leftclose::after{
+    transform: rotate(45deg);
+}
+.leftclose::before{
+    transform: rotate(-45deg);
 }
