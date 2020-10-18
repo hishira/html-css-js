@@ -2,11 +2,12 @@ body{
     background-color: #f8f0e3;
     margin: 0;
 }
-/*
+
 .buttonendanimation{
     visibility: hidden;
-}*/
+}
 
+/*
 
 .entrance{
     position: absolute;
@@ -64,6 +65,7 @@ body{
         opacity:0;
     }
 }
+*/
 .maincontainer{
     
 }
@@ -172,4 +174,45 @@ body{
 }
 .leftclose::before{
     transform: rotate(-45deg);
+}
+.maincontainer-center{
+    border: 2px solid red;
+    width: 50%;
+    margin: 5rem 15rem 0 auto;
+    padding: 2rem;
+    height: 30rem;
+    position: relative;
+}
+.maincontainer-center-home{
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 30rem;
+}
+.stop-animation{
+    animation: appearoff .9s ease-in-out forwards;
+    transition: all .9s ease-in-out;
+}
+.maincontainer-center-about{
+    font-size: 1.5rem;;
+    opacity:1;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    height: 30rem;
+    padding: 2rem 3rem 2rem 3rem;
+    overflow: auto;
+}
+.animate{
+    animation: aboutinfoappear .9s ease-in-out forwards;
+    transition: all .9s ease-in-out;
+}
+@keyframes aboutinfoappear {
+    to{
+        opacity: 1;
+    }
+}
+@keyframes appearoff{
+    to{
+        opacity: 0;
+    }
 }
