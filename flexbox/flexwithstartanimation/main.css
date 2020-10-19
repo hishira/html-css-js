@@ -176,7 +176,6 @@ body{
     transform: rotate(-45deg);
 }
 .maincontainer-center{
-    border: 2px solid red;
     width: 50%;
     margin: 5rem 15rem 0 auto;
     padding: 2rem;
@@ -193,14 +192,52 @@ body{
     transition: all .9s ease-in-out;
 }
 .maincontainer-center-about{
-    font-size: 1.5rem;;
+    font-size: 1.5rem;
     opacity:1;
     position: absolute;
     top: 0;
     opacity: 0;
     height: 30rem;
     padding: 2rem 3rem 2rem 3rem;
-    overflow: auto;
+}
+
+.maincontainer-center-projects{
+    position: absolute;
+    top: 0;
+    left:20%;
+    height: 30rem;
+    opacity:0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 3rem 2rem 3rem;
+}
+.projects{
+    display: flex;
+}
+.projects-lists{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.projects-lists > li{
+    display: flex;
+    flex: 1 0 40%;
+    margin: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    justify-content: center;
+    height: 3rem;
+    line-height: 3rem;
+    border: .5px solid #9faeac;
+    border-radius: 15px;
+}
+.projects-lists > li:hover{
+    cursor: pointer;
 }
 .animate{
     animation: aboutinfoappear .9s ease-in-out forwards;
@@ -212,6 +249,9 @@ body{
     }
 }
 @keyframes appearoff{
+    from{
+        opacity: 1;
+    }
     to{
         opacity: 0;
     }

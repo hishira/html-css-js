@@ -1,6 +1,7 @@
 let leftpanel = false;
 let MAINCONTAINERCENTERHOME = "maincontainer-center-home";
 let lASTVALUE = "maincontainer-center-home";
+let TIMEOUT = 500;
 function indissapearbuttonclick(event) {
   let clickedElement = event.target;
   console.log(clickedElement);
@@ -36,41 +37,35 @@ function leftpanelClickHandle() {
   }
 }
 function aboutappear() {
-  let element = document.getElementsByClassName(lASTVALUE)[0];
-  element.classList.remove("animate");
-  element.classList.add("stop-animation");
+    firsthelper();
   setTimeout(() => {
-    let secondelement = document.getElementsByClassName(
-      "maincontainer-center-about"
-    )[0];
-    lASTVALUE = "maincontainer-center-about";
-    secondelement.classList.remove("stop-animation");
-    secondelement.classList.add("animate");
-  },900);
-}
-function projectsappear() {
-  let element = document.getElementsByClassName(lASTVALUE)[0];
-  element.classList.remove("animate");
-  element.classList.add("stop-animation");
-  setTimeout(() => {
-    let secondelement = document.getElementsByClassName(
-      "maincontainer-center-about"
-    )[0];
-    lASTVALUE = "maincontainer-center-about";
-    secondelement.classList.remove("stop-animation");
-    secondelement.classList.add("animate");
-  },900);
+    secondHelper("maincontainer-center-about")
+  }, TIMEOUT);
 }
 function homeappear() {
-    let element = document.getElementsByClassName(lASTVALUE)[0];
-    element.classList.remove("animate");
-    element.classList.add("stop-animation");
-    setTimeout(() => {
-      let secondelement = document.getElementsByClassName(
-        "maincontainer-center-home"
-      )[0];
-      lASTVALUE = "maincontainer-center-home";
-      secondelement.classList.remove("stop-animation");
-      secondelement.classList.add("animate")
-    },900);
-  }
+
+    firsthelper();
+  setTimeout(() => {
+    secondHelper("maincontainer-center-home")
+  }, TIMEOUT);
+}
+function projectsappear() {
+  firsthelper();
+  setTimeout(() => {
+    secondHelper("maincontainer-center-projects")
+  }, TIMEOUT );
+}
+function firsthelper() {
+  let element = document.getElementsByClassName(lASTVALUE)[0];
+  element.classList.remove("animate");
+  element.classList.add("stop-animation");
+  
+}
+function secondHelper(lastcssclass){
+  let secondelement = document.getElementsByClassName(
+    lastcssclass
+  )[0];
+  lASTVALUE = lastcssclass;
+  secondelement.classList.remove("stop-animation");
+  secondelement.classList.add("animate");
+}
