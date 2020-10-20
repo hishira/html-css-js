@@ -216,6 +216,7 @@ body{
 }
 .projects{
     display: flex;
+    margin-bottom: 7rem;
 }
 .projects-lists{
     display: flex;
@@ -255,4 +256,15 @@ body{
     to{
         opacity: 0;
     }
+}
+.title{
+    height: 4rem;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 1.8rem;
+    margin-left: 1.5rem;
 }
