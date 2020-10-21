@@ -69,3 +69,9 @@ function secondHelper(lastcssclass){
   secondelement.classList.remove("stop-animation");
   secondelement.classList.add("animate");
 }
+function starProjects(){
+  firsthelper();
+  setTimeout(() => {
+    secondHelper("maincontainer-center-spacestar")
+  }, TIMEOUT );
+}

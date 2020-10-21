@@ -268,3 +268,19 @@ body{
     font-size: 1.8rem;
     margin-left: 1.5rem;
 }
+.maincontainer-center-spacestar{
+    position: relative;
+    left:1rem;
+    top:-18rem;
+    opacity: 0;
+}
+.space-title{
+    font-size: 30px;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+}
+.content{
+    line-height: 2rem;
+    line-break: auto;
+}
