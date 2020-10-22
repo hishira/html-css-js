@@ -75,3 +75,9 @@ function starProjects(){
     secondHelper("maincontainer-center-spacestar")
   }, TIMEOUT );
 }
+function shopProjects(){
+  firsthelper();
+  setTimeout(() => {
+    secondHelper("maincontainer-center-shop")
+  }, TIMEOUT );
+}
