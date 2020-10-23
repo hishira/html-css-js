@@ -3,12 +3,11 @@ body{
     margin: 0;
 }
 
+/*
 .buttonendanimation{
     visibility: hidden;
 }
-
-/*
-
+*/
 .entrance{
     position: absolute;
     width: 100%;
@@ -40,6 +39,7 @@ body{
     position: absolute;
     left:38%;
     top:43%;
+    z-index: 200;
     
 }
 .buttonendanimation-only:hover{
@@ -65,7 +65,7 @@ body{
         opacity:0;
     }
 }
-*/
+
 .maincontainer{
     
 }
@@ -186,6 +186,7 @@ body{
     font-size: 1.5rem;
     text-align: center;
     line-height: 30rem;
+    z-index: -200;
 }
 .stop-animation{
     animation: appearoff .9s ease-in-out forwards;
@@ -207,6 +208,7 @@ body{
     left:20%;
     height: 30rem;
     opacity:0;
+    visibility: hidden;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -244,6 +246,7 @@ body{
 .animate{
     animation: aboutinfoappear .9s ease-in-out forwards;
     transition: all .9s ease-in-out;
+    visibility: visible;
 }
 @keyframes aboutinfoappear {
     to{
@@ -270,9 +273,9 @@ body{
     margin-left: 1.5rem;
 }
 .maincontainer-center-spacestar{
-    position: relative;
+    position: absolute;
     left:1rem;
-    top:-18rem;
+    top: 10rem;
     opacity: 0;
     background: url("https://lh3.googleusercontent.com/YGJ77qN9KiwctZgfqV8Bf3hNo0rZvcFaPKDTkvtS6kVbtwyCS80Pm6dpXzJCCLZE1Q") center center no-repeat;
     background-size: cover;
@@ -296,12 +299,35 @@ body{
 .maincontainer-center-shop{
     position: absolute;
     left:1rem;
-    top: 15rem;
+    top: 10rem;
     z-index: -100;
     opacity: 0;
-    background: url("https://upload.wikimedia.org/wikipedia/commons/b/b8/The_Body_Shop_in_Vienna%2C_June_2012.JPG") center center no-repeat;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/5/57/Netto_w_Wojkowicach.JPG") center center no-repeat;
     background-size: cover;
     color:white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+.maincontainer-center-degrengolada{
+    position: absolute;
+    left:1rem;
+    top: 10rem;
+    z-index: -100;
+    opacity: 0;
+    background: url("https://cdn.pixabay.com/photo/2020/10/05/10/51/cat-5628953_960_720.jpg") center center no-repeat;
+    background-size: cover;
+    color:white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+.maincontainer-center-otherproject{
+    position: absolute;
+    left:1rem;
+    top: 10rem;
+    z-index: -100;
+    opacity: 0;
+    background: url("https://cdn.pixabay.com/photo/2020/10/20/03/43/glacier-5669423_960_720.jpg") center center no-repeat;
+    background-size: cover;
     padding: 1rem;
     border-radius: 10px;
 }

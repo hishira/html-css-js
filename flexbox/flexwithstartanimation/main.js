@@ -81,3 +81,15 @@ function shopProjects(){
     secondHelper("maincontainer-center-shop")
   }, TIMEOUT );
 }
+function degrenoladaShop(){
+  firsthelper();
+  setTimeout(() => {
+    secondHelper("maincontainer-center-degrengolada")
+  }, TIMEOUT);
+}
+function showOtherProjects(){
+  firsthelper()
+  setTimeout(() => {
+    secondHelper("maincontainer-center-otherproject")
+  }, TIMEOUT);
+}
