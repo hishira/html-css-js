@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <script src="main.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="screenrow"></div>
+        <div class="firstrow row">
+        <div class="calcbutton">(</div>
+        <div class="calcbutton">)</div>
+      </div>
+      <div class="secondrow row">
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">7</div>
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">8</div>
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">9</div>
+        <div onclick="calcbutton(event)" class="calcbutton oparation lastbutton">\</div>
+      </div>
+      <div class="thirdrow row">
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">4</div>
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">5</div>
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">6</div>
+        <div onclick="calcbutton(event)" class="calcbutton oparation lastbutton">x</div>
+      </div>
+      <div class="fourrow row">
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">1</div>
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">2</div>
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">3</div>
+        <div onclick="calcbutton(event)" class="calcbutton lastbutton">-</div>
+      </div>
+      <div class="five row">
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">0</div>
+        <div onclick="buttonclick(event)" class="calcbutton x numberbutton">.</div>
+        <div onclick="calculation(event)" class="calcbutton x numberbutton equalsign">=</div>
+        <div onclick="calcbutton(event)" class="calcbutton lastbutton plus">+</div>
+      </div>
+    </div>
+  </body>
+</html>

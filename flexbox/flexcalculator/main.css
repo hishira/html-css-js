@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+}
+.container {
+  position: absolute;
+  border: 1px solid black;
+  top: 30%;
+  left: 40%;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.firstrow {
+}
+.calcbutton {
+  padding: 0.9rem 2.5rem 0.9rem 2.5rem;
+  margin-left: 0.4rem;
+}
+.firstrow > * {
+  background-color: slategray;
+  border-radius: 5px;
+}
+.secondrow {
+}
+.calcbutton:hover {
+  cursor: pointer;
+}
+.equalsign {
+  background-color: lightskyblue;
+  border-radius: 5px;
+  margin-top: 0.3rem;
+}
+.lastbutton {
+  background-color: slategray;
+  margin-top: 0.2rem;
+  border-radius: 5px;
+  width: 0.1rem;
+}
+.plus {
+  margin-left: 0.6rem;
+}
+.screenrow {
+  width: 100%;
+  height: 3rem;
+  background-color: black;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  color: white;
+  line-height: 3rem;
+  font-size: 3rem;
+  text-align: end;
+  box-sizing: border-box;
+  padding: 0rem .5rem;
+}
