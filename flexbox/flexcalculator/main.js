@@ -59,4 +59,9 @@ function calculation(e) {
   STRINGVALUE = valuetmp;
   let screen = document.getElementsByClassName("screenrow")[0];
   screen.innerHTML = STRINGVALUE;
+  stos = []
+  console.log(stos)
+  stos.push(valuetmp)
+  STRINGVALUE = "0"
+  console.log(stos)
 }
