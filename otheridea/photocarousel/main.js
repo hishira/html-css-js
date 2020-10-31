@@ -7,8 +7,9 @@ const photoarray = [
     "https://cdn.pixabay.com/photo/2020/10/11/09/04/peak-5645235__340.jpg",
     "https://cdn.pixabay.com/photo/2019/06/13/11/22/golden-gate-bridge-4271364__340.jpg"
 ];
+let startindex = 0;
 function buttonclikc(photoindex){
-    console.log(photoindex)
+    
     let karuzela = document.getElementById("carousellelement")
     karuzela.src = photoarray[photoindex]
 }
@@ -25,10 +26,20 @@ function onload(){
     let lielements = document.getElementsByClassName("lielement");
     for(let i in lielements){
         lielements[i].addEventListener('click',()=>buttonclikc(i))
-        
     }
+    let idinterval = setInterval(changePicture,1500)
 }
-let startindex = 0
+function changePicture(){
+    console.log(startindex)
+    let futureindex = startindex + 1;
+    if(futureindex >= photoarray.length)
+        startindex = 0;
+    else{
+        startindex = futureindex;
+    }
+    let karuzela = document.getElementById("carousellelement")
+    karuzela.src = photoarray[startindex]
+}
 function nextPhoto(){
     let futureindex = startindex+1;
     if(futureindex >= photoarray.length){
