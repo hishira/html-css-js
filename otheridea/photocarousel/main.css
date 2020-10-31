@@ -1,0 +1,39 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.maincontainer{
+    border: 2px solid red;
+    position: relative;
+    width:100%;
+}
+.carousell{
+    position: absolute;
+    
+    left: 50%;
+    transform: translateX(-50%) translateY(40%);
+}
+#buttonelements{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left:50%;
+    transform: translateX(-60%) translateY(80%);
+}
+#buttonelements > li{
+    display: block;
+    margin: .5rem;
+    margin-left: 2rem;
+}
+#buttonelements > li::before{
+    position: absolute;  
+    background-color: slategray;
+    content: "  ";
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid whitesmoke;
+    border-radius: 50%;
+}
+.lielement{
+    
+}
