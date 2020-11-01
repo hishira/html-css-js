@@ -26,7 +26,7 @@ function onload(){
         lielement.textContent=" ";
         secondelement.appendChild(lielement);
     }
-    idinterval = setInterval(changePicture,1500)
+    idinterval = setInterval(changePicture,2300)
     let lielements = document.getElementsByClassName("lielement");
     for(let i = 0;i<photoarray.length;i++){
         lielements[i].addEventListener('click',()=>buttonclikc(i,idinterval))
@@ -35,7 +35,6 @@ function onload(){
     
 }
 function changePicture(){
-   
     let futureindex = startindex + 1;
     if(futureindex >= photoarray.length)
         startindex = 0;
@@ -43,7 +42,13 @@ function changePicture(){
         startindex = futureindex;
     }
     let karuzela = document.getElementById("carousellelement")
-    karuzela.src = photoarray[startindex]
+    karuzela.classList.remove("animation")
+    karuzela.classList.add("animationoff")
+    karuzela.classList.add("animation")
+    setTimeout(()=>{
+        karuzela.classList.remove("animationoff")
+        karuzela.src = photoarray[startindex]
+    },800)
 }
 function nextPhoto(){
     let futureindex = startindex+1;
