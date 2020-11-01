@@ -9,9 +9,9 @@ const photoarray = [
 ];
 let startindex = 0;
 function buttonclikc(photoindex){
-    
     let karuzela = document.getElementById("carousellelement")
     karuzela.src = photoarray[photoindex]
+    startindex = photoindex;
 }
 function onload(){
     let element = document.getElementById("carousellelement")
@@ -23,14 +23,16 @@ function onload(){
         lielement.textContent=" ";
         secondelement.appendChild(lielement);
     }
+    let idinterval = setInterval(changePicture,1500)
     let lielements = document.getElementsByClassName("lielement");
-    for(let i in lielements){
+    for(let i = 0;i<photoarray.length;i++){
         lielements[i].addEventListener('click',()=>buttonclikc(i))
     }
-    let idinterval = setInterval(changePicture,1500)
+    
+    
 }
 function changePicture(){
-    console.log(startindex)
+   
     let futureindex = startindex + 1;
     if(futureindex >= photoarray.length)
         startindex = 0;
