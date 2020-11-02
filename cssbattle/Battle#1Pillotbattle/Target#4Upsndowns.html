@@ -1,0 +1,44 @@
+<div class='square'>
+    <div class='firstrow'>
+      <div class='elements first-element'></div>
+    </div>
+    <div class='secondrow'>
+      <div class='elements second-element'></div>
+      <div class='elements second-element'></div>
+    </div>
+ </div>
+ <style>
+   body{
+     margin:0;
+     background-color:#62306D;
+   }
+   .square{
+     position:absolute;
+     left:50%;
+     transform: translateX(-50%) translateY(25%);
+   
+     width:25rem
+   }
+   .firstrow{
+     display:flex;
+     justify-content:center;
+     
+   }
+   .secondrow{
+     display:flex;
+       justify-content:space-around;
+   }
+   .elements {
+     width: 100px;
+     height: 100px;
+     background: #F7EC7D;
+   }
+   .first-element{
+     border-top-left-radius:50%;
+     border-top-right-radius:50%;
+   }
+   .second-element{
+     border-bottom-left-radius:50%;
+     border-bottom-right-radius:50%;
+   }
+ </style>
