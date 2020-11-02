@@ -14,7 +14,7 @@ function buttonclikc(photoindex,interval){
     karuzela.src = photoarray[photoindex]
     startindex = photoindex;
     clearInterval(interval);
-    idinterval = setInterval(changePicture,1500);
+    idinterval = setInterval(changePicture,2300);
 }
 function onload(){
     let element = document.getElementById("carousellelement")
@@ -44,10 +44,10 @@ function changePicture(){
     let karuzela = document.getElementById("carousellelement")
     karuzela.classList.remove("animation")
     karuzela.classList.add("animationoff")
-    karuzela.classList.add("animation")
     setTimeout(()=>{
         karuzela.classList.remove("animationoff")
         karuzela.src = photoarray[startindex]
+        karuzela.classList.add("animation")
     },800)
 }
 function nextPhoto(){
