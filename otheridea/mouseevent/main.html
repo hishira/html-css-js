@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body onload="squareLoad()">
+    <div class="square">
+      <div id="element"></div>
+    </div>
+    <style>
+      body {
+        border: 2px solid red;
+        position: relative;
+      }
+      .square {
+        height: 40vh;
+        border: 2px solid purple;
+        position: relative;
+      }
+      #element {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        left: 0px;
+        background: cornflowerblue;
+      }
+    </style>
+  </body>
+  <script>
+    function squareLoad() {
+        /*
+            Okropne podążanie kwadrata za myszką z uzyciem ax + b
+        */
+      const element = document.getElementsByClassName("square")[0];
+      element.addEventListener("mousemove", (event) => {
+        const player = document.getElementById("element");
+        const boundingrect = player.getBoundingClientRect();
+        let playerx = Number(player.style.left.replace("px",""));
+        const playery = Number(player.style.top.replace("px",""));
+        const mousex = event.clientX;
+        const mousey = event.clientY;
+        const leftside = [
+          [playerx, 1.0],
+          [mousex, 1.0],
+        ];
+        const divide = leftside[0][0] / leftside[1][0];
+        const nearb = 1.0 * divide;
+        const nearright = divide * mousey;
+        const b = nearright / nearb;
+        const a = (playery - b) / playerx;
+        if (playerx < mousex) playerx += 10.1;
+        else if (playerx === mousex) playerx = mousex;
+        else playerx -= 15.5;
+        if (playery === mousey && playerx === mousex)
+            return;
+        let newy = a * (playery + 0.1)  + b;
+        if (playery > mousey) {
+          newy = a * (playery - 15.5) * Math.sin(Math.PI/5) + b;
+        } else if (playery === mousey) {
+          newy = mousey;
+        }
+        if (playerx < element.getBoundingClientRect().width)
+          player.style.left = `${playerx}px`;
+        else {
+          player.style.left = "0px";
+        }
+        if (playery < element.getBoundingClientRect().height)
+          player.style.top = `${newy}px`;
+        else {
+          player.style.top = "0px";
+        }
+      });
+    }
+  </script>
+</html>
