@@ -27,18 +27,24 @@ class Header extends HTMLElement {
         if (e.key === "ArrowRight") {
           if (getattribute === "home") {
             this.skillsredirect(this.shadowRoot, ownclass);
+            window.location.hash="skills"
           } else if (getattribute === "skills") {
             this.aboutrefirect(this.shadowRoot, ownclass);
+            window.location.hash="about"
           } else if (getattribute === "about") {
             this.homeredirect(this.shadowRoot, ownclass);
+            window.location.hash="home"
           }
         } else if (e.key === "ArrowLeft") {
           if (getattribute === "home") {
             this.aboutrefirect(this.shadowRoot, ownclass);
+            window.location.hash = "about";
           } else if (getattribute === "skills") {
             this.homeredirect(this.shadowRoot, ownclass);
+            window.location.hash = "home";
           } else if (getattribute === "about") {
             this.skillsredirect(this.shadowRoot, ownclass);
+            window.location.hash = "skills";
           }
         }
       }
