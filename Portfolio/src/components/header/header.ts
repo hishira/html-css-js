@@ -1,24 +1,26 @@
-import html from "./header.html";
+import html from "bundle-text:./header.html";
+import style from "../../style/main.style.module.scss"
 class Header extends HTMLElement {
-  private shadowDom: ShadowRoot;
+  private styleValue: string = style;
   constructor() {
     super();
-    this.shadowDom = this.attachShadow({ mode: "open" });
-    this.shadowDom.innerHTML = html.trim();
-    let firstclick: HTMLElement | null = this.shadowDom.getElementById("first");
+ 
+    this.innerHTML = html;
+    let firstclick: HTMLElement | null = document.getElementById("first");
     let secondclck: HTMLElement | null =
-      this.shadowDom.getElementById("second");
-    let thirdclick: HTMLElement | null = this.shadowDom.getElementById("third");
+    document.getElementById("second");
+    let thirdclick: HTMLElement | null = document.getElementById("third");
     let ownclass: Header = this;
+    
     if (firstclick && secondclck && thirdclick) {
       firstclick.addEventListener("click", (e: MouseEvent) =>
-        this.homeredirect(this.shadowDom, ownclass)
+        this.homeredirect(document, ownclass)
       );
       secondclck.addEventListener("click", (e: MouseEvent) =>
-        this.skillsredirect(this.shadowDom, ownclass)
+        this.skillsredirect(document, ownclass)
       );
       thirdclick.addEventListener("click", (e: MouseEvent) =>
-        this.aboutrefirect(this.shadowDom, ownclass)
+        this.aboutrefirect(document, ownclass)
       );
     }
     window.addEventListener("keydown", (e) => {
@@ -29,24 +31,24 @@ class Header extends HTMLElement {
       if (e.key !== undefined) {
         if (e.key === "ArrowRight") {
           if (getattribute === "home") {
-            this.skillsredirect(this.shadowDom, ownclass);
+            this.skillsredirect(document, ownclass);
             window.location.hash = "skills";
           } else if (getattribute === "skills") {
-            this.aboutrefirect(this.shadowDom, ownclass);
+            this.aboutrefirect(document, ownclass);
             window.location.hash = "about";
           } else if (getattribute === "about") {
-            this.homeredirect(this.shadowDom, ownclass);
+            this.homeredirect(document, ownclass);
             window.location.hash = "home";
           }
         } else if (e.key === "ArrowLeft") {
           if (getattribute === "home") {
-            this.aboutrefirect(this.shadowDom, ownclass);
+            this.aboutrefirect(document, ownclass);
             window.location.hash = "about";
           } else if (getattribute === "skills") {
-            this.homeredirect(this.shadowDom, ownclass);
+            this.homeredirect(document, ownclass);
             window.location.hash = "home";
           } else if (getattribute === "about") {
-            this.skillsredirect(this.shadowDom, ownclass);
+            this.skillsredirect(document, ownclass);
             window.location.hash = "skills";
           }
         }
@@ -57,18 +59,18 @@ class Header extends HTMLElement {
     let root: HTMLElement | null = document.getElementById("root");
     root?.setAttribute(attribute, where);
   }
-  public elementRemoveClass(root: ShadowRoot, ids: Array<string>, classtoremove: string) {
+  public elementRemoveClass(root: Document, ids: Array<string>, classtoremove: string) {
     for (let i = 0; i < ids.length; i++) {
       let element: HTMLElement | null = root.getElementById(ids[i]);
       element?.classList.remove(classtoremove);
     }
   }
-  public elementAddClass(root: ShadowRoot, id: string, classname: string) {
+  public elementAddClass(root: Document, id: string, classname: string) {
     let elementwithclass: HTMLElement | null = root.getElementById(id);
     elementwithclass?.classList.add(classname);
   }
   
-  public homeredirect(shadow: ShadowRoot, ownclass: Header) {
+  public homeredirect(shadow: Document, ownclass: Header) {
     ownclass.elementRemoveClass(
       shadow,
       ["first", "second", "third"],
@@ -78,7 +80,7 @@ class Header extends HTMLElement {
     Header.atributeset("historylacation", "home");
   }
   
-  public skillsredirect(shadow: ShadowRoot, ownclass: Header) {
+  public skillsredirect(shadow: Document, ownclass: Header) {
     ownclass.elementRemoveClass(
       shadow,
       ["first", "second", "third"],
@@ -88,7 +90,7 @@ class Header extends HTMLElement {
     Header.atributeset("historylacation", "skills");
   }
 
-  public aboutrefirect(shadow: ShadowRoot, ownclass: Header) {
+  public aboutrefirect(shadow: Document, ownclass: Header) {
     ownclass.elementRemoveClass(
       shadow,
       ["first", "second", "third"],
@@ -98,4 +100,4 @@ class Header extends HTMLElement {
     Header.atributeset("historylacation", "about");
   }
 }
-customElements.define("app-header", Header);
+window.customElements.define("app-header", Header);
