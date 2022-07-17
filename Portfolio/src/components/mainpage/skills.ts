@@ -1,9 +1,8 @@
-import skills from './skills.html'
+import skills from 'bundle-text:./skills.html';
 class Skills extends HTMLElement{
     constructor(){
         super();
-        this.attachShadow({mode:"open"})
-        this.shadowRoot.innerHTML = skills
+        this.innerHTML = skills
     }
 }
 customElements.define("skills-body",Skills)

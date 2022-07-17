@@ -1,0 +1,34 @@
+.mainwrapper_about {
+  border: 2px solid red;
+  padding: 0.2rem;
+  clip-path: circle(0%);
+  transition: clip-path 1500ms;
+  animation: appear 1.5s ease forwards;
+}
+@keyframes appear {
+  from {
+    clip-path: circle(0%);
+  }
+  to {
+    clip-path: circle(100%);
+  }
+}
+.education {
+  border: 2px solid purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.education__title {
+  font-size: 1.5rem;
+}
+.info__title {
+}
+.info__year {
+}
+@media (min-width: 500px) {
+  .education {
+    margin-top: 1.5rem;
+  }
+}

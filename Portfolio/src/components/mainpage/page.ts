@@ -1,22 +1,27 @@
+import style from "../../style/about.style.module.scss"
+import style2 from "../../style/skills.style.module.scss";
+import style3 from "../../style/home.style.module.scss"
+
 class MainPage extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
     if (window.location.hash === "#skills") {
-      this.shadowRoot.innerHTML = "<skills-body></skills-body>";
+      this.innerHTML = "<skills-body></skills-body>";
     } else if (window.location.hash === "#about") {
-      this.shadowRoot.innerHTML = "<about-body></about-body>";
+      this.innerHTML = "<about-body></about-body>";
     } else {
-      this.shadowRoot.innerHTML = "<home-body></home-body>";
+      this.innerHTML = "<home-body></home-body>";
     }
   }
   static get observedAttributes() {
     return ["historylacation"];
   }
-  htmlchange(html) {
-    this.shadowRoot.innerHTML = html;
+
+  htmlchange(html: string) {
+    this.innerHTML = html;
   }
-  attributeChangedCallback(name, oldval, newval) {
+
+  attributeChangedCallback(name: string, oldval: string, newval: string) {
     if (name === "historylacation") {
       if (oldval === newval) return;
       switch (newval) {
