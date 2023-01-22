@@ -1,6 +1,6 @@
-import style from "../../style/about.style.module.scss"
-import style2 from "../../style/skills.style.module.scss";
-import style3 from "../../style/home.style.module.scss"
+//import style from "../../style/about.style.module.scss"
+//import style2 from "../../style/skills.style.module.scss";
+//import style3 from "../../style/home.style.module.scss"
 
 class MainPage extends HTMLElement {
   constructor() {

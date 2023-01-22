@@ -1,7 +1,7 @@
 import html from "bundle-text:./header.html";
-import style from "../../style/main.style.module.scss"
+//import style from "../../style/main.style.module.scss"
 class Header extends HTMLElement {
-  private styleValue: string = style;
+  //private styleValue: string = style;
   constructor() {
     super();
  
