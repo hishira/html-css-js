@@ -28,7 +28,7 @@ class Header extends HTMLElement {
         window.addEventListener('keydown', this.keyDownHandle.bind(this));
     }
 
-    public keyDownHandle(e: KeyboardEvent) {
+    keyDownHandle(e: KeyboardEvent) {
         e.preventDefault();
         let ownclass: Header = this;
         let getattribute = document
@@ -43,13 +43,14 @@ class Header extends HTMLElement {
             this.changeWindowHash(getattribute as HeaderButton, 'left');
         }
     }
-    public setDefaultPosition() {
+    
+    setDefaultPosition() {
         this.elementAddClass(document, 'first', 'underline');
         Header.atributeset('historylacation', 'home');
     }
 
     // TODO: Think of change into one function
-    public redirect(
+    redirect(
         redirectSite: HeaderButton,
         document: Document,
         ownclass: Header
@@ -63,7 +64,7 @@ class Header extends HTMLElement {
         }
     }
 
-    public rediectLeft(
+    rediectLeft(
         redirectSite: HeaderButton,
         document: Document,
         ownclass: Header
@@ -77,7 +78,7 @@ class Header extends HTMLElement {
         }
     }
 
-    public changeWindowHash(
+    changeWindowHash(
         redirectSite: HeaderButton,
         redirectType: 'right' | 'left'
     ): void {
@@ -93,7 +94,7 @@ class Header extends HTMLElement {
         root?.setAttribute(attribute, where);
     }
 
-    public elementRemoveClass(
+    elementRemoveClass(
         root: Document,
         ids: Array<string>,
         classtoremove: string
@@ -104,12 +105,12 @@ class Header extends HTMLElement {
         });
     }
 
-    public elementAddClass(root: Document, id: string, classname: string) {
+    elementAddClass(root: Document, id: string, classname: string) {
         let elementwithclass: HTMLElement | null = root.getElementById(id);
         elementwithclass?.classList.add(classname);
     }
 
-    public homeredirect(shadow: Document, ownclass: Header) {
+    homeredirect(shadow: Document, ownclass: Header) {
         ownclass.elementRemoveClass(
             shadow,
             ['first', 'second', 'third'],
@@ -119,7 +120,7 @@ class Header extends HTMLElement {
         Header.atributeset('historylacation', 'home');
     }
 
-    public skillsredirect(shadow: Document, ownclass: Header) {
+    skillsredirect(shadow: Document, ownclass: Header) {
         ownclass.elementRemoveClass(
             shadow,
             ['first', 'second', 'third'],
@@ -129,7 +130,7 @@ class Header extends HTMLElement {
         Header.atributeset('historylacation', 'skills');
     }
 
-    public aboutRedirect(shadow: Document, ownclass: Header) {
+    aboutRedirect(shadow: Document, ownclass: Header) {
         ownclass.elementRemoveClass(
             shadow,
             ['first', 'second', 'third'],
@@ -139,7 +140,7 @@ class Header extends HTMLElement {
         Header.atributeset('historylacation', 'about');
     }
 
-    private hanleClickButtons(
+    hanleClickButtons(
         homeButton: HTMLElement | null,
         skillsButton: HTMLElement | null,
         aboutButton: HTMLElement | null
