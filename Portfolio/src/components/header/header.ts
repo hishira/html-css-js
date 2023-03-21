@@ -13,6 +13,11 @@ class Header extends HTMLElement {
         ['skills', 'home'],
         ['about', 'skills'],
     ]);
+
+    private keyMapper: Map<string, string> = new Map([
+        ['ArrowRight', 'right'],
+        ['ArrowLeft', 'left'],
+    ]);
     constructor() {
         super();
 
@@ -35,26 +40,36 @@ class Header extends HTMLElement {
             .getElementById('root')
             ?.getAttribute('historylacation');
         if (isNil(e.key) || isNil(getattribute)) return;
-        if (e.key === 'ArrowRight') {
-            this.redirect(getattribute as HeaderButton, document, ownclass);
-            this.changeWindowHash(getattribute as HeaderButton, 'right');
-        } else if (e.key === 'ArrowLeft') {
-            this.rediectLeft(getattribute as HeaderButton, document, ownclass);
-            this.changeWindowHash(getattribute as HeaderButton, 'left');
-        }
+        const direction = this.keyMapper.get(e.key);
+        console.log(direction);
+        direction &&
+            this.redirectWindowsAndHash(
+                getattribute as HeaderButton,
+                document,
+                ownclass,
+                direction
+            );
     }
-    
+
+    redirectWindowsAndHash(
+        button: HeaderButton,
+        documentLike: Document,
+        ownclass: Header,
+        direction: 'right' | 'left'
+    ) {
+        direction === 'right'
+            ? this.redirect(button, documentLike, ownclass)
+            : this.rediectLeft(button, documentLike, ownclass);
+        this.changeWindowHash(button, direction);
+    }
+
     setDefaultPosition() {
         this.elementAddClass(document, 'first', 'underline');
         Header.atributeset('historylacation', 'home');
     }
 
     // TODO: Think of change into one function
-    redirect(
-        redirectSite: HeaderButton,
-        document: Document,
-        ownclass: Header
-    ) {
+    redirect(redirectSite: HeaderButton, document: Document, ownclass: Header) {
         if (redirectSite === 'home') {
             this.skillsredirect(document, ownclass);
         } else if (redirectSite === 'skills') {
