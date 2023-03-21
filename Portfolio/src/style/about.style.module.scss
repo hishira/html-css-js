@@ -1,5 +1,4 @@
 .mainwrapper_about {
-  border: 2px solid red;
   padding: 0.2rem;
   clip-path: circle(0%);
   transition: clip-path 1500ms;
@@ -14,7 +13,6 @@
   }
 }
 .education {
-  border: 2px solid purple;
   display: flex;
   flex-direction: column;
   justify-content: center;

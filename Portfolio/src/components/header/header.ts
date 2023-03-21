@@ -20,28 +20,35 @@ class Header extends HTMLElement {
         let firstclick: HTMLElement | null = document.getElementById('first');
         let secondclck: HTMLElement | null = document.getElementById('second');
         let thirdclick: HTMLElement | null = document.getElementById('third');
-        let ownclass: Header = this;
 
         if (isNilOneOfThem(firstclick, secondclck, thirdclick)) return;
 
         this.hanleClickButtons(firstclick, secondclck, thirdclick);
-        window.addEventListener('keydown', (e: KeyboardEvent) => {
-            e.preventDefault();
-            let getattribute = document
-                .getElementById('root')
-                ?.getAttribute('historylacation');
-            if (isNil(e.key) || isNil(getattribute)) return;
-            if (e.key === 'ArrowRight') {
-                this.redirect(getattribute as HeaderButton, document, ownclass);
-                this.changeWindowHash(getattribute as HeaderButton, 'right');
-            } else if (e.key === 'ArrowLeft') {
-                this.rediectLeft(getattribute as HeaderButton, document, ownclass);
-                this.changeWindowHash(getattribute as HeaderButton, 'left');
-            }
-        });
+        this.setDefaultPosition();
+        window.addEventListener('keydown', this.keyDownHandle.bind(this));
     }
 
-	// TODO: Think of change into one function
+    public keyDownHandle(e: KeyboardEvent) {
+        e.preventDefault();
+        let ownclass: Header = this;
+        let getattribute = document
+            .getElementById('root')
+            ?.getAttribute('historylacation');
+        if (isNil(e.key) || isNil(getattribute)) return;
+        if (e.key === 'ArrowRight') {
+            this.redirect(getattribute as HeaderButton, document, ownclass);
+            this.changeWindowHash(getattribute as HeaderButton, 'right');
+        } else if (e.key === 'ArrowLeft') {
+            this.rediectLeft(getattribute as HeaderButton, document, ownclass);
+            this.changeWindowHash(getattribute as HeaderButton, 'left');
+        }
+    }
+    public setDefaultPosition() {
+        this.elementAddClass(document, 'first', 'underline');
+        Header.atributeset('historylacation', 'home');
+    }
+
+    // TODO: Think of change into one function
     public redirect(
         redirectSite: HeaderButton,
         document: Document,
@@ -91,10 +98,10 @@ class Header extends HTMLElement {
         ids: Array<string>,
         classtoremove: string
     ) {
-        for (let i = 0; i < ids.length; i++) {
-            let element: HTMLElement | null = root.getElementById(ids[i]);
+        ids.forEach((value, index, array) => {
+            let element: HTMLElement | null = root.getElementById(ids[index]);
             element?.classList.remove(classtoremove);
-        }
+        });
     }
 
     public elementAddClass(root: Document, id: string, classname: string) {
