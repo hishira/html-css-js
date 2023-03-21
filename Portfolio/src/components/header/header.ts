@@ -13,6 +13,11 @@ class Header extends HTMLElement {
         ['skills', 'home'],
         ['about', 'skills'],
     ]);
+
+    private keyMapper: Map<string, string> = new Map([
+        ['ArrowRight', 'right'],
+        ['ArrowLeft', 'left'],
+    ]);
     constructor() {
         super();
 
@@ -20,33 +25,51 @@ class Header extends HTMLElement {
         let firstclick: HTMLElement | null = document.getElementById('first');
         let secondclck: HTMLElement | null = document.getElementById('second');
         let thirdclick: HTMLElement | null = document.getElementById('third');
-        let ownclass: Header = this;
 
         if (isNilOneOfThem(firstclick, secondclck, thirdclick)) return;
 
         this.hanleClickButtons(firstclick, secondclck, thirdclick);
-        window.addEventListener('keydown', (e: KeyboardEvent) => {
-            e.preventDefault();
-            let getattribute = document
-                .getElementById('root')
-                ?.getAttribute('historylacation');
-            if (isNil(e.key) || isNil(getattribute)) return;
-            if (e.key === 'ArrowRight') {
-                this.redirect(getattribute as HeaderButton, document, ownclass);
-                this.changeWindowHash(getattribute as HeaderButton, 'right');
-            } else if (e.key === 'ArrowLeft') {
-                this.rediectLeft(getattribute as HeaderButton, document, ownclass);
-                this.changeWindowHash(getattribute as HeaderButton, 'left');
-            }
-        });
+        this.setDefaultPosition();
+        window.addEventListener('keydown', this.keyDownHandle.bind(this));
     }
 
-	// TODO: Think of change into one function
-    public redirect(
-        redirectSite: HeaderButton,
-        document: Document,
-        ownclass: Header
+    keyDownHandle(e: KeyboardEvent) {
+        e.preventDefault();
+        let ownclass: Header = this;
+        let getattribute = document
+            .getElementById('root')
+            ?.getAttribute('historylacation');
+        if (isNil(e.key) || isNil(getattribute)) return;
+        const direction = this.keyMapper.get(e.key);
+        console.log(direction);
+        direction &&
+            this.redirectWindowsAndHash(
+                getattribute as HeaderButton,
+                document,
+                ownclass,
+                direction
+            );
+    }
+
+    redirectWindowsAndHash(
+        button: HeaderButton,
+        documentLike: Document,
+        ownclass: Header,
+        direction: 'right' | 'left'
     ) {
+        direction === 'right'
+            ? this.redirect(button, documentLike, ownclass)
+            : this.rediectLeft(button, documentLike, ownclass);
+        this.changeWindowHash(button, direction);
+    }
+
+    setDefaultPosition() {
+        this.elementAddClass(document, 'first', 'underline');
+        Header.atributeset('historylacation', 'home');
+    }
+
+    // TODO: Think of change into one function
+    redirect(redirectSite: HeaderButton, document: Document, ownclass: Header) {
         if (redirectSite === 'home') {
             this.skillsredirect(document, ownclass);
         } else if (redirectSite === 'skills') {
@@ -56,7 +79,7 @@ class Header extends HTMLElement {
         }
     }
 
-    public rediectLeft(
+    rediectLeft(
         redirectSite: HeaderButton,
         document: Document,
         ownclass: Header
@@ -70,7 +93,7 @@ class Header extends HTMLElement {
         }
     }
 
-    public changeWindowHash(
+    changeWindowHash(
         redirectSite: HeaderButton,
         redirectType: 'right' | 'left'
     ): void {
@@ -86,23 +109,23 @@ class Header extends HTMLElement {
         root?.setAttribute(attribute, where);
     }
 
-    public elementRemoveClass(
+    elementRemoveClass(
         root: Document,
         ids: Array<string>,
         classtoremove: string
     ) {
-        for (let i = 0; i < ids.length; i++) {
-            let element: HTMLElement | null = root.getElementById(ids[i]);
+        ids.forEach((value, index, array) => {
+            let element: HTMLElement | null = root.getElementById(ids[index]);
             element?.classList.remove(classtoremove);
-        }
+        });
     }
 
-    public elementAddClass(root: Document, id: string, classname: string) {
+    elementAddClass(root: Document, id: string, classname: string) {
         let elementwithclass: HTMLElement | null = root.getElementById(id);
         elementwithclass?.classList.add(classname);
     }
 
-    public homeredirect(shadow: Document, ownclass: Header) {
+    homeredirect(shadow: Document, ownclass: Header) {
         ownclass.elementRemoveClass(
             shadow,
             ['first', 'second', 'third'],
@@ -112,7 +135,7 @@ class Header extends HTMLElement {
         Header.atributeset('historylacation', 'home');
     }
 
-    public skillsredirect(shadow: Document, ownclass: Header) {
+    skillsredirect(shadow: Document, ownclass: Header) {
         ownclass.elementRemoveClass(
             shadow,
             ['first', 'second', 'third'],
@@ -122,7 +145,7 @@ class Header extends HTMLElement {
         Header.atributeset('historylacation', 'skills');
     }
 
-    public aboutRedirect(shadow: Document, ownclass: Header) {
+    aboutRedirect(shadow: Document, ownclass: Header) {
         ownclass.elementRemoveClass(
             shadow,
             ['first', 'second', 'third'],
@@ -132,7 +155,7 @@ class Header extends HTMLElement {
         Header.atributeset('historylacation', 'about');
     }
 
-    private hanleClickButtons(
+    hanleClickButtons(
         homeButton: HTMLElement | null,
         skillsButton: HTMLElement | null,
         aboutButton: HTMLElement | null

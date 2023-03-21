@@ -1,39 +1,34 @@
+import { PageType } from './global';
+
 class MainPage extends HTMLElement {
-  constructor() {
-    super();
-    if (window.location.hash === "#skills") {
-      this.innerHTML = "<skills-body></skills-body>";
-    } else if (window.location.hash === "#about") {
-      this.innerHTML = "<about-body></about-body>";
-    } else {
-      this.innerHTML = "<home-body></home-body>";
+    private mapper: Map<PageType, string> = new Map([
+        ['home', '<home-body></home-body>'],
+        ['about', '<about-body></about-body>'],
+        ['skills', '<skills-body></skills-body>'],
+    ]);
+    constructor() {
+        super();
+        const locationtype = window.location.hash.replace('#', '') as PageType;
+        console.log(locationtype);
+        this.locationChangehandle(locationtype);
     }
-  }
-  static get observedAttributes() {
-    return ["historylacation"];
-  }
-
-  htmlchange(html: string) {
-    this.innerHTML = html;
-  }
-
-  attributeChangedCallback(name: string, oldval: string, newval: string) {
-    if (name === "historylacation") {
-      if (oldval === newval) return;
-      switch (newval) {
-        case "home":
-          this.htmlchange("<home-body></home-body>");
-          break;
-        case "skills":
-          this.htmlchange("<skills-body></skills-body>");
-          break;
-        case "about":
-          this.htmlchange("<about-body></about-body>");
-          break;
-        default:
-          this.htmlchange("<home-body></home-body>");
-      }
+    static get observedAttributes() {
+        return ['historylacation'];
     }
-  }
+
+    htmlchange(html: string) {
+        this.innerHTML = html;
+    }
+
+    attributeChangedCallback(name: string, oldval: string, newval: string) {
+        if (name !== 'historylacation' || oldval === newval) return;
+        this.locationChangehandle(newval as PageType);
+    }
+
+    private locationChangehandle(attributeName: PageType): void {
+        const redirectElement = this.mapper.get(attributeName);
+        redirectElement && (window.location.hash = attributeName);
+        this.htmlchange(redirectElement ?? (this.mapper.get('home') as string));
+    }
 }
-customElements.define("main-page", MainPage);
+customElements.define('main-page', MainPage);
